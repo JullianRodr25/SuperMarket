@@ -40,8 +40,9 @@ public class ReciboDeSupermercado
 
 public class Carrito
 {
-    public static decimal Calcular(object productos)
+    public static decimal Calcular(List<(string nombre, decimal precio, decimal cantidad)> productos)
     {
-        return 2.49m;
+        return productos.Sum(p => p.precio);
+
     }
 }
