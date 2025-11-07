@@ -37,6 +37,22 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(4.48m);
     }
     
+    [Fact]
+    public void Si_AgregoUnProductoCon2Unidades_Debe_RetornarElValorTotal()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Arroz", 2.49m, 2),
+        };
+
+        //act
+        var totalCompra = Carrito.Calcular(productos);
+        
+        //Asert
+        totalCompra.Should().Be(4.98m);
+    }
+    
 }
 
 public class Carrito
