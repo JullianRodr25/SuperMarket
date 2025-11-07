@@ -8,7 +8,7 @@ public class ReciboDeSupermercado
     public void Si_AgregoUnProducto_Debe_RetornarElValorTotal()
     {
         //arrange
-        var productos = new List<(string nombre, decimal precio, decimal cantidad)>
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
         {
             ("Arroz", 2.49m, 1),
         };
@@ -21,10 +21,10 @@ public class ReciboDeSupermercado
     }
     
     [Fact]
-    public void Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
+    public void Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotalSi_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
     {
         //arrange
-        var productos = new List<(string nombre, decimal precio, decimal cantidad)>
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
         {
             ("Arroz", 2.49m, 1),
             ("Leche", 1.99m, 1),
@@ -36,11 +36,12 @@ public class ReciboDeSupermercado
         //Asert
         totalCompra.Should().Be(4.48m);
     }
+    
 }
 
 public class Carrito
 {
-    public static decimal Calcular(List<(string nombre, decimal precio, decimal cantidad)> productos)
+    public static decimal Calcular(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
         return productos.Sum(p => p.precio);
 
