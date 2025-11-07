@@ -14,17 +14,17 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var total = Carrito.Calcular(productos);
+        var totalCompra = Carrito.Calcular(productos);
         
         //Asert
-        total.Should().Be("2.49m");
+        totalCompra.Should().Be(2.49m);
     }
 }
 
 public class Carrito
 {
-    public static object Calcular(object productos)
+    public static decimal Calcular(object productos)
     {
-        return "2.49m";
+        return 2.49m;
     }
 }
