@@ -15,13 +15,14 @@ public class ReciboDeSupermercado
 
         //act
         var totalCompra = Carrito.Calcular(productos);
-        
+
         //Asert
         totalCompra.Should().Be(2.49m);
     }
-    
+
     [Fact]
-    public void Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotalSi_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
+    public void
+        Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotalSi_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
     {
         //arrange
         var productos = new List<(string nombre, decimal precio, decimal unidad)>
@@ -32,34 +33,30 @@ public class ReciboDeSupermercado
 
         //act
         var totalCompra = Carrito.Calcular(productos);
-        
+
         //Asert
         totalCompra.Should().Be(4.48m);
     }
-    
-    [Fact]
-    public void Si_AgregoUnProductoCon2Unidades_Debe_RetornarElValorTotal()
+
+    [Theory]
+    [InlineData("Arroz", 2.49, 2, 4.98)]
+    [InlineData("Leche", 1.99, 5, 9.95)]
+    public void Si_AgregoProductosConMasDe1Unidad_Debe_RetornarElValorTotal(
+        string nombre,
+        decimal precio,
+        decimal unidad,
+        decimal esperado)
     {
-        //arrange
+        // Arrange
         var productos = new List<(string nombre, decimal precio, decimal unidad)>
         {
-            ("Arroz", 2.49m, 2),
+            (nombre, precio, unidad)
         };
 
-        //act
+        // Act
         var totalCompra = Carrito.Calcular(productos);
-        
-        //Asert
-        totalCompra.Should().Be(4.98m);
-    }
-    
-}
 
-public class Carrito
-{
-    public static decimal Calcular(List<(string nombre, decimal precio, decimal unidad)> productos)
-    {
-        return productos.Sum(p => p.precio * p.unidad);
-
+        // Assert
+        totalCompra.Should().Be(esperado);
     }
 }
