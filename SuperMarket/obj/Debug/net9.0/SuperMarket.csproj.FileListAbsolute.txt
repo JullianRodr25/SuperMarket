@@ -97,3 +97,4 @@ C:\Users\julian.vargas\Desktop\BootcampTDD\SuperMarket\SuperMarket\obj\Debug\net
 C:\Users\julian.vargas\Desktop\BootcampTDD\SuperMarket\SuperMarket\obj\Debug\net9.0\SuperMarket.genruntimeconfig.cache
 C:\Users\julian.vargas\Desktop\BootcampTDD\SuperMarket\SuperMarket\obj\Debug\net9.0\ref\SuperMarket.dll
 C:\Users\julian.vargas\Desktop\BootcampTDD\SuperMarket\SuperMarket\bin\Debug\net9.0\FluentAssertions.dll
+C:\Users\julian.vargas\Desktop\BootcampTDD\SuperMarket\SuperMarket\obj\Debug\net9.0\SuperMarket.sourcelink.json

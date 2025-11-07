@@ -1,0 +1,60 @@
+## Compilación de .NET
+bin/
+obj/
+out/
+TestResults/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+## Carpetas de Rider / Visual Studio / VSCode
+.vs/
+.idea/
+.vscode/
+
+## Archivos de paquetes
+packages/
+*.nupkg
+*.snupkg
+*.nuspec
+
+## Dependencias locales
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Archivos de configuración temporal
+launchSettings.json
+appsettings.*.json
+
+## Archivos generados por pruebas
+TestResult.xml
+coverage.*
+*.coverage
+*.coveragexml
+
+## Archivos del sistema
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+## Archivos de backup o temporales
+*.bak
+*.tmp
+*.temp
+*.log
+*.swp
+*~
+
+## Configuración de usuario (entornos locales)
+*.user
+*.rsuser
