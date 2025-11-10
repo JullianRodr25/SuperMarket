@@ -154,4 +154,22 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(2.24m);
     }
     
+    [Fact]
+    public void Si_Agrego2BolsaDeArroz_Debe_Aplicar10PorCientoDescuento()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Arroz", 2.49m, 2),
+        };
+
+        //act
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
+
+        //Assert
+        totalCompra.Should().Be(4.48m);
+    }
+    
 }
