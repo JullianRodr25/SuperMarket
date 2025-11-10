@@ -172,4 +172,24 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(4.48m);
     }
     
+        
+    [Fact]
+    public void Si_Agrego5TubosDePastaDeDientes_Debe_AplicarPrecioPromocional5x7_49()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Pasta de dientes", 1.79m, 5),
+        };
+
+        //act
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
+
+        //Assert
+        totalCompra.Should().Be(7.49m);
+    }
+    
+    
 }
