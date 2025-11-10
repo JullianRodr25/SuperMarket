@@ -5,8 +5,8 @@ public class Carrito
     public static decimal Calcular(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
         var subtotal = productos.Sum(p => p.precio * p.unidad);
-        var descuentos = AplicaDescuentos(productos);
-        var total = subtotal - descuentos;
+        var descuento = AplicaDescuentos(productos);
+        var total = subtotal - descuento;
         return Math.Round(total, 2);
     }
 
