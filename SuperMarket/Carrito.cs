@@ -24,7 +24,9 @@ public class Carrito
 
         if (manzanas.nombre == "Manzanas")
         {
-            descuentoTotal = 0.398m;
+            var subtotalManzanas = manzanas.precio * manzanas.unidad;
+            var descuentoManzanas = subtotalManzanas * 0.20m;
+            descuentoTotal += descuentoManzanas;
         }
 
         return descuentoTotal;
