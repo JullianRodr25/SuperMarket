@@ -5,6 +5,7 @@ namespace SuperMarket;
 public class Carrito
 {
     private bool _descuentosActivados;
+    private readonly Descuentos _calculaDescuentos = new();
 
     public decimal Calcular(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
@@ -16,44 +17,17 @@ public class Carrito
 
     private decimal AplicaDescuentos(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
-        decimal descuentoTotal = 0;
-        var cepillos = productos.FirstOrDefault(p => p.nombre == "Cepillo de dientes");
-        var manzanas = productos.FirstOrDefault(p => p.nombre == "Manzanas");
-        var arroz = productos.FirstOrDefault(p => p.nombre == "Arroz");
-        var pastaDeDientes = productos.FirstOrDefault(p => p.nombre == "Pasta de dientes");
-        var tomates = productos.FirstOrDefault(p => p.nombre == "Tomates cherry");
-        
         if (!_descuentosActivados) return 0;
-        if (cepillos.nombre == "Cepillo de dientes" && cepillos.unidad >= 3)
-        {
-            var unidadesGratis = (int)(cepillos.unidad / 3);
-            descuentoTotal += unidadesGratis * cepillos.precio;
-        }
 
-        if (manzanas.nombre == "Manzanas")
-        {
-            var subtotalManzanas = manzanas.precio * manzanas.unidad;
-            var descuentoManzanas = subtotalManzanas * 0.20m;
-            descuentoTotal += descuentoManzanas;
-        }
+        decimal descuentoTotal = 0;
 
-        if (arroz.nombre == "Arroz")
+        foreach (var producto in productos)
         {
-            var subtotalArroz = arroz.precio * arroz.unidad;
-            var descuentoArroz = subtotalArroz * 0.10m;
-            descuentoTotal += descuentoArroz;
-        }
-
-        if (pastaDeDientes is { nombre: "Pasta de dientes", unidad: >= 5 })
-        {
-            var paquetes = (int)(pastaDeDientes.unidad / 5);
-            descuentoTotal += (paquetes * 5 * 1.79m) - (paquetes * 7.49m);
-        }
-        
-        if (tomates.nombre != null && tomates.unidad >= 2)
-        {
-            var paquetes = (int)(tomates.unidad / 2);
-            descuentoTotal += paquetes * 0.39m;
+            descuentoTotal += _calculaDescuentos.CalcularDescuento(
+                producto.nombre, 
+                producto.precio, 
+                producto.unidad
+            );
         }
 
         return descuentoTotal;

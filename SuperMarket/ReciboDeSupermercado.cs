@@ -4,6 +4,7 @@ namespace SuperMarket;
 
 public class ReciboDeSupermercado
 {
+    
     [Fact]
     public void Si_AgregoUnProducto_Debe_RetornarElValorTotal()
     {
@@ -23,7 +24,7 @@ public class ReciboDeSupermercado
 
     [Fact]
     public void
-        Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotalSi_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
+        Si_AgregoDosProductosCon1Unidad_Debe_RetornarElValorTotal()
     {
         //arrange
         var productos = new List<(string nombre, decimal precio, decimal unidad)>
@@ -191,13 +192,20 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(7.49m);
     }
     
-    [Fact]
-    public void Si_Agrego2CajasDeTomates_Debe_AplicarPrecioPromocional2CajasX0_99()
+    [Theory]
+    [InlineData("Tomates cherry", 0.69, 1, 0.69)]
+    [InlineData("Tomates cherry", 0.69, 2, 0.99)]
+    [InlineData("Tomates cherry", 0.69, 4, 1.98)]
+
+    public void Si_AgregoCajasDeTomates_Debe_AplicarPrecioPromocionalYNormal( string nombre,
+        decimal precio,
+        decimal unidades,
+        decimal esperado)
     {
         //arrange
         var productos = new List<(string nombre, decimal precio, decimal unidad)>
         {
-            ("Tomates cherry", 0.69m, 2),
+            (nombre, precio, unidades)
         };
 
         var carrito = new Carrito();
@@ -205,8 +213,8 @@ public class ReciboDeSupermercado
         var totalCompra = carrito.Calcular(productos);
 
         //Assert
-        totalCompra.Should().Be(0.99m);
+        totalCompra.Should().Be(esperado);
+        
     }
-    
-    
+
 }
