@@ -20,6 +20,7 @@ public class Carrito
         var cepillos = productos.FirstOrDefault(p => p.nombre == "Cepillo de dientes");
         var manzanas = productos.FirstOrDefault(p => p.nombre == "Manzanas");
         var arroz = productos.FirstOrDefault(p => p.nombre == "Arroz");
+        var pastaDeDientes = productos.FirstOrDefault(p => p.nombre == "Pasta de dientes");
 
         if (!_descuentosActivados) return 0;
         if (cepillos.nombre == "Cepillo de dientes" && cepillos.unidad >= 3)
@@ -40,6 +41,12 @@ public class Carrito
             var subtotalArroz = arroz.precio * arroz.unidad;
             var descuentoArroz = subtotalArroz * 0.10m;
             descuentoTotal += descuentoArroz;
+        }
+
+        if (pastaDeDientes.nombre == "Pasta de dientes" && pastaDeDientes.unidad >= 5)
+        {
+            int paquetes = (int)(pastaDeDientes.unidad / 5);
+            descuentoTotal += (paquetes * 5 * 1.79m) - (paquetes * 7.49m);
         }
 
         return descuentoTotal;
