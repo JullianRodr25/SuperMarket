@@ -4,9 +4,8 @@ namespace SuperMarket;
 
 public class Carrito
 {
-    
     private bool _descuentosActivados;
-    
+
     public decimal Calcular(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
         var subtotal = productos.Sum(p => p.precio * p.unidad);
@@ -38,7 +37,9 @@ public class Carrito
 
         if (arroz.nombre == "Arroz")
         {
-            descuentoTotal += 0.25m;
+            var subtotalArroz = arroz.precio * arroz.unidad;
+            var descuentoArroz = subtotalArroz * 0.10m;
+            descuentoTotal += descuentoArroz;
         }
 
         return descuentoTotal;
