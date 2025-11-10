@@ -15,7 +15,8 @@ public class Carrito
 
         if (cepillos.nombre != null && cepillos.unidad >= 3)
         {
-            return 0.99m;
+            int unidadesGratis = (int)(cepillos.unidad / 3);
+            return unidadesGratis * cepillos.precio;
         }
 
         return 0m;
