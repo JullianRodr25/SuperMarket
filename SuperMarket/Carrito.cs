@@ -43,9 +43,9 @@ public class Carrito
             descuentoTotal += descuentoArroz;
         }
 
-        if (pastaDeDientes.nombre == "Pasta de dientes" && pastaDeDientes.unidad >= 5)
+        if (pastaDeDientes is { nombre: "Pasta de dientes", unidad: >= 5 })
         {
-            int paquetes = (int)(pastaDeDientes.unidad / 5);
+            var paquetes = (int)(pastaDeDientes.unidad / 5);
             descuentoTotal += (paquetes * 5 * 1.79m) - (paquetes * 7.49m);
         }
 
