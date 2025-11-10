@@ -137,7 +137,7 @@ public class ReciboDeSupermercado
     }
     
     [Fact]
-    public void Si_Agrego1SacoDeArroz_Debe_Aplicar10PorCientoDescuento()
+    public void Si_Agrego1BolsaDeArroz_Debe_Aplicar10PorCientoDescuento()
     {
         //arrange
         var productos = new List<(string nombre, decimal precio, decimal unidad)>

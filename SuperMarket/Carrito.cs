@@ -22,29 +22,26 @@ public class Carrito
         var manzanas = productos.FirstOrDefault(p => p.nombre == "Manzanas");
         var arroz = productos.FirstOrDefault(p => p.nombre == "Arroz");
 
-        if (_descuentosActivados)
+        if (!_descuentosActivados) return 0;
+        if (cepillos.nombre == "Cepillo de dientes" && cepillos.unidad >= 3)
         {
-            if (cepillos.nombre == "Cepillo de dientes" && cepillos.unidad >= 3)
-            {
-                var unidadesGratis = (int)(cepillos.unidad / 3);
-                descuentoTotal += unidadesGratis * cepillos.precio;
-            }
-
-            if (manzanas.nombre == "Manzanas")
-            {
-                var subtotalManzanas = manzanas.precio * manzanas.unidad;
-                var descuentoManzanas = subtotalManzanas * 0.20m;
-                descuentoTotal += descuentoManzanas;
-            }
-
-            if (arroz.nombre == "Arroz")
-            {
-                descuentoTotal += 0.25m;
-            }
-
-            return descuentoTotal;
+            var unidadesGratis = (int)(cepillos.unidad / 3);
+            descuentoTotal += unidadesGratis * cepillos.precio;
         }
-        return 0;
+
+        if (manzanas.nombre == "Manzanas")
+        {
+            var subtotalManzanas = manzanas.precio * manzanas.unidad;
+            var descuentoManzanas = subtotalManzanas * 0.20m;
+            descuentoTotal += descuentoManzanas;
+        }
+
+        if (arroz.nombre == "Arroz")
+        {
+            descuentoTotal += 0.25m;
+        }
+
+        return descuentoTotal;
     }
 
     public void AplicarDescuentosSemana()
