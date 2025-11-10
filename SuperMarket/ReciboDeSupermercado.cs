@@ -108,4 +108,20 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(1.59m);
     }
     
+    [Fact]
+    public void Si_Agrego2KilosDeManzanas_Debe_Aplicar20PorCientoDescuento()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Manzanas", 1.99m, 2),
+        };
+
+        //act
+        var totalCompra = Carrito.Calcular(productos);
+
+        //Assert
+        totalCompra.Should().Be(3.18m);
+    }
+    
 }
