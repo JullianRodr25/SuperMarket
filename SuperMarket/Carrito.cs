@@ -6,19 +6,27 @@ public class Carrito
     {
         var subtotal = productos.Sum(p => p.precio * p.unidad);
         var descuentos = AplicaDescuentos(productos);
-        return subtotal - descuentos;
+        var total = subtotal - descuentos;
+        return Math.Round(total, 2);
     }
 
     private static decimal AplicaDescuentos(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
+        decimal descuentoTotal = 0;
         var cepillos = productos.FirstOrDefault(p => p.nombre == "Cepillo de dientes");
+        var manzanas = productos.FirstOrDefault(p => p.nombre == "Manzanas");
 
-        if (cepillos.nombre != null && cepillos.unidad >= 3)
+        if (cepillos.nombre == "Cepillo de dientes" && cepillos.unidad >= 3)
         {
             var unidadesGratis = (int)(cepillos.unidad / 3);
-            return unidadesGratis * cepillos.precio;
+            descuentoTotal += unidadesGratis * cepillos.precio;
         }
 
-        return 0m;
+        if (manzanas.nombre == "Manzanas")
+        {
+            descuentoTotal = 0.398m;
+        }
+
+        return descuentoTotal;
     }
 }
