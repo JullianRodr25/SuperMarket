@@ -14,7 +14,8 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        var totalCompra = carrito.Calcular(productos);
 
         //Asert
         totalCompra.Should().Be(2.49m);
@@ -32,7 +33,8 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        var totalCompra = carrito.Calcular(productos);
 
         //Asert
         totalCompra.Should().Be(4.48m);
@@ -54,7 +56,8 @@ public class ReciboDeSupermercado
         };
 
         // Act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        var totalCompra = carrito.Calcular(productos);
 
         // Assert
         totalCompra.Should().Be(esperado);
@@ -70,7 +73,9 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
 
         //Asert
         totalCompra.Should().Be(1.98m);
@@ -86,7 +91,10 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
 
         //Assert
         totalCompra.Should().Be(3.96m);
@@ -102,7 +110,9 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
 
         //Assert
         totalCompra.Should().Be(1.59m);
@@ -118,7 +128,9 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
 
         //Assert
         totalCompra.Should().Be(3.18m);
@@ -134,7 +146,9 @@ public class ReciboDeSupermercado
         };
 
         //act
-        var totalCompra = Carrito.Calcular(productos);
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
 
         //Assert
         totalCompra.Should().Be(2.24m);
