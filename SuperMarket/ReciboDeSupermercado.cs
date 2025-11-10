@@ -191,5 +191,22 @@ public class ReciboDeSupermercado
         totalCompra.Should().Be(7.49m);
     }
     
+    [Fact]
+    public void Si_Agrego2CajasDeTomates_Debe_AplicarPrecioPromocional2CajasX0_99()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Tomates cherry", 0.69m, 2),
+        };
+
+        var carrito = new Carrito();
+        carrito.AplicarDescuentosSemana();
+        var totalCompra = carrito.Calcular(productos);
+
+        //Assert
+        totalCompra.Should().Be(0.99m);
+    }
+    
     
 }
