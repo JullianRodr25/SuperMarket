@@ -59,4 +59,20 @@ public class ReciboDeSupermercado
         // Assert
         totalCompra.Should().Be(esperado);
     }
+    
+    [Fact]
+    public void Si_Agrego3UnidadesDeCepillosDeDientes_Debe_RetornarELValorTotalAplicandoElDescuento()
+    {
+        //arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Cepillo de dientes", 0.99m, 3),
+        };
+
+        //act
+        var totalCompra = Carrito.Calcular(productos);
+
+        //Asert
+        totalCompra.Should().Be(1.98m);
+    }
 }
