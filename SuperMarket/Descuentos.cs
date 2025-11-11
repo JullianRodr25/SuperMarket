@@ -15,7 +15,7 @@ public class Descuentos
         };
     }
 
-    private decimal CalcularDescuentoCepillos(decimal precio, decimal unidad)
+    private static decimal CalcularDescuentoCepillos(decimal precio, decimal unidad)
     {
         if (unidad < 3) return 0;
 
@@ -23,19 +23,19 @@ public class Descuentos
         return unidadesGratis * precio;
     }
 
-    private decimal CalcularDescuentoManzanas(decimal precio, decimal unidad)
+    private static decimal CalcularDescuentoManzanas(decimal precio, decimal unidad)
     {
         var subtotal = precio * unidad;
         return subtotal * 0.20m;
     }
 
-    private decimal CalcularDescuentoArroz(decimal precio, decimal unidad)
+    private static decimal CalcularDescuentoArroz(decimal precio, decimal unidad)
     {
         var subtotal = precio * unidad;
         return subtotal * 0.10m;
     }
 
-    private decimal CalcularDescuentoPastaDental(decimal precio, decimal unidad)
+    private static decimal CalcularDescuentoPastaDental(decimal precio, decimal unidad)
     {
         if (unidad < 5) return 0;
 
@@ -45,7 +45,7 @@ public class Descuentos
         return precioNormal - precioPromocional;
     }
 
-    private decimal CalcularDescuentoTomates(decimal precio, decimal unidad)
+    private static decimal CalcularDescuentoTomates(decimal precio, decimal unidad)
     {
         if (unidad < 2) return 0;
 
