@@ -37,4 +37,9 @@ public class Carrito
     {
         _descuentosActivados = true;
     }
+
+    public Recibo GenerarRecibo(List<(string nombre, decimal precio, decimal unidad)> productos)
+    {
+        return new Recibo();
+    }
 }
