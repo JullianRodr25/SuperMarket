@@ -24,8 +24,8 @@ public class Carrito
         foreach (var producto in productos)
         {
             descuentoTotal += _calculaDescuentos.CalcularDescuento(
-                producto.nombre, 
-                producto.precio, 
+                producto.nombre,
+                producto.precio,
                 producto.unidad
             );
         }
@@ -40,9 +40,12 @@ public class Carrito
 
     public Recibo GenerarRecibo(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
-        var detalles = productos.Select(p => p.nombre).ToList();
+        var detalles = productos
+            .Select(p => $"{p.nombre} - Precio: {p.precio:C} - Cantidad: {p.unidad}")
+            .ToList();
+
         var total = Calcular(productos);
-    
+
         return new Recibo
         {
             ProductosDetalles = detalles,

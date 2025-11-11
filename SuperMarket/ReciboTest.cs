@@ -62,7 +62,7 @@ public class ReciboTest
     
         // Assert
         recibo.ProductosDetalles[0].Should().Contain("Arroz");
-        recibo.ProductosDetalles[0].Should().Contain("2.49");
+        recibo.ProductosDetalles[0].Should().Contain("2,49");
         recibo.ProductosDetalles[0].Should().Contain("2");
         recibo.Total.Should().Be(4.98m);
     }
