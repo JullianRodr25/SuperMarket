@@ -40,10 +40,19 @@ public class Carrito
 
     public Recibo GenerarRecibo(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
+        var detalles = new List<string>();
+    
+        foreach (var producto in productos)
+        {
+            detalles.Add(producto.nombre);
+        }
+    
+        var total = Calcular(productos);
+    
         return new Recibo
         {
-            ProductosDetalles = new List<string> { "Arroz" },
-            Total = 2.49m,
+            ProductosDetalles = detalles,
+            Total = total,
             TotalDescuentos = 0m
         };
     }
