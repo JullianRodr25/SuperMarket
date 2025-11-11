@@ -47,4 +47,24 @@ public class ReciboTest
         recibo.TotalDescuentos.Should().Be(0m);
     }
     
+    [Fact]
+    public void Si_ComproUnProducto_Debe_GenerarReciboYDebeIncluirNombrePrecioYCantidad()
+    {
+        // Arrange
+        var productos = new List<(string nombre, decimal precio, decimal unidad)>
+        {
+            ("Arroz", 2.49m, 2)
+        };
+        var carrito = new Carrito();
+
+        // Act
+        var recibo = carrito.GenerarRecibo(productos);
+    
+        // Assert
+        recibo.ProductosDetalles[0].Should().Contain("Arroz");
+        recibo.ProductosDetalles[0].Should().Contain("2.49");
+        recibo.ProductosDetalles[0].Should().Contain("2");
+        recibo.Total.Should().Be(4.98m);
+    }
+    
 }
