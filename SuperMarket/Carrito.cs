@@ -44,13 +44,15 @@ public class Carrito
             .Select(p => $"{p.nombre} - Precio: {p.precio:C} - Cantidad: {p.unidad}")
             .ToList();
 
-        var total = Calcular(productos);
+        var subtotal = productos.Sum(p => p.precio * p.unidad);
+        var descuentos = AplicaDescuentos(productos);
+        var total = subtotal - descuentos;
 
         return new Recibo
         {
             ProductosDetalles = detalles,
-            Total = total,
-            TotalDescuentos = 0m
+            Total = Math.Round(total, 2),
+            TotalDescuentos = Math.Round(descuentos, 2)
         };
     }
 }
