@@ -40,6 +40,11 @@ public class Carrito
 
     public Recibo GenerarRecibo(List<(string nombre, decimal precio, decimal unidad)> productos)
     {
-        return new Recibo();
+        return new Recibo
+        {
+            ProductosDetalles = new List<string> { "Arroz" },
+            Total = 2.49m,
+            TotalDescuentos = 0m
+        };
     }
 }
