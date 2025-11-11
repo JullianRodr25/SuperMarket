@@ -2,7 +2,7 @@
 
 namespace SuperMarket;
 
-public class ReciboDeSupermercado
+public class CarritoTest
 {
     
     [Fact]

@@ -6,16 +6,16 @@ public class Descuentos
     {
         return nombreProducto switch
         {
-            "Cepillo de dientes" => DescuentoCepillos(precio, unidad),
-            "Manzanas" => DescuentoManzanas(precio, unidad),
-            "Arroz" => DescuentoArroz(precio, unidad),
-            "Pasta de dientes" => DescuentoPastaDental(precio, unidad),
-            "Tomates cherry" => DescuentoTomates(precio, unidad),
+            "Cepillo de dientes" => CalcularDescuentoCepillos(precio, unidad),
+            "Manzanas" => CalcularDescuentoManzanas(precio, unidad),
+            "Arroz" => CalcularDescuentoArroz(precio, unidad),
+            "Pasta de dientes" => CalcularDescuentoPastaDental(precio, unidad),
+            "Tomates cherry" => CalcularDescuentoTomates(precio, unidad),
             _ => 0
         };
     }
 
-    private decimal DescuentoCepillos(decimal precio, decimal unidad)
+    private decimal CalcularDescuentoCepillos(decimal precio, decimal unidad)
     {
         if (unidad < 3) return 0;
 
@@ -23,19 +23,19 @@ public class Descuentos
         return unidadesGratis * precio;
     }
 
-    private decimal DescuentoManzanas(decimal precio, decimal unidad)
+    private decimal CalcularDescuentoManzanas(decimal precio, decimal unidad)
     {
         var subtotal = precio * unidad;
         return subtotal * 0.20m;
     }
 
-    private decimal DescuentoArroz(decimal precio, decimal unidad)
+    private decimal CalcularDescuentoArroz(decimal precio, decimal unidad)
     {
         var subtotal = precio * unidad;
         return subtotal * 0.10m;
     }
 
-    private decimal DescuentoPastaDental(decimal precio, decimal unidad)
+    private decimal CalcularDescuentoPastaDental(decimal precio, decimal unidad)
     {
         if (unidad < 5) return 0;
 
@@ -45,7 +45,7 @@ public class Descuentos
         return precioNormal - precioPromocional;
     }
 
-    private decimal DescuentoTomates(decimal precio, decimal unidad)
+    private decimal CalcularDescuentoTomates(decimal precio, decimal unidad)
     {
         if (unidad < 2) return 0;
 
